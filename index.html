@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahoot Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            margin: 5px 0;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kahoot Bot</h1>
+    <p>Gib den Game Pin, den Namen und die Anzahl der Bots ein, um das Spiel zu joinen (nur Simulation).</p>
+    
+    <form id="kahoot-form">
+        <label for="pin">Game Pin:</label>
+        <input type="text" id="pin" name="pin" required>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="amount">Bots:</label>
+        <input type="number" id="amount" name="amount" min="1" max="100" value="50">
+        <br>
+        <button type="submit">Join Game</button>
+    </form>
+
+    <div id="status"></div>
+
+    <script>
+        document.getElementById("kahoot-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let pin = document.getElementById("pin").value;
+            let name = document.getElementById("name").value;
+            let amount = document.getElementById("amount").value;
+
+            document.getElementById("status").innerHTML = `Joining Kahoot game with Pin: ${pin}, Name: ${name}, Bots: ${amount}`;
+
+            // Simuliere die Bot-Anmeldung
+            setTimeout(function() {
+                let botsJoined = parseInt(amount);
+                let resultMessage = `Success! ${botsJoined} Bots joined the game.`;
+                document.getElementById("status").innerHTML = resultMessage;
+            }, 3000);  // Warte 3 Sekunden, um die Anmeldung zu simulieren
+        });
+    </script>
+</body>
+</html>
